@@ -57,7 +57,7 @@ public class SuperArray {
   }
 
   private void reSize() {
-    String[] newData = new String[ size * 2 + 1];
+    String[] newData = new String[ (size * 2) + 1];
     for ( int x = 0 ; x < size; x ++) {
       newData[x] = data[x];
     }
@@ -81,25 +81,56 @@ public class SuperArray {
   }
 
   public int lastIndexOf( String target) {
-    for ( int x = size; x > 0; x--) {
+    for ( int x = size - 1; x >= 0; x--) {
       if ( data[x].equals(target))
-      return size - x;
+      return x;
     }
     return -1;
   }
 
   public void add( int index, String element) {
+    if (index < 0 || index > size())
+    System.out.println( "index out of bounds");
+    else {
     if ( data.length <= size)
     reSize();
     String[] newData = new String[data.length];
     for( int x = 0; x < index; x++) {
       newData[x] = data[x];
     }
-    newData[index] = element;
-    for ( int x = index + 1; x < size + 1; x++){
-      newData[x] = data[x+1];
-    }
+    newData[index] = element ;
     size++;
+    for ( int x = index ; x < size + 1 ; x++){
+      newData[x+1] = data[x];
+    }
+    data = newData;
+  }
+}
+
+  public String remove( int index){
+    String output = data[index];
+    if (index < 0 || index > size())
+    System.out.println( "index out of bounds");
+    else {
+      String[] newData = new String[data.length];
+      for( int x = 0; x < index; x++) {
+        newData[x] = data[x];
+      }
+      size--;
+      for ( int x = index; x < size; x++){
+        newData[x] = data[x+1];
+      }
+      data = newData;
+    }
+    return output;
+  }
+
+  public boolean remove(String element) {
+    if( contains(element)) {
+      remove( indexOf(element));
+      return true;
+    }
+    return ( contains(element));
   }
 
 
