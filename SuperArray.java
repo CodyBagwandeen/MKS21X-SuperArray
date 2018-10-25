@@ -57,7 +57,7 @@ public class SuperArray {
   }
 
   private void reSize() {
-    String[] newData = new String[ size * 2];
+    String[] newData = new String[ size * 2 + 1];
     for ( int x = 0 ; x < size; x ++) {
       newData[x] = data[x];
     }
@@ -87,4 +87,20 @@ public class SuperArray {
     }
     return -1;
   }
+
+  public void add( int index, String element) {
+    if ( data.length <= size)
+    reSize();
+    String[] newData = new String[data.length];
+    for( int x = 0; x < index; x++) {
+      newData[x] = data[x];
+    }
+    newData[index] = element;
+    for ( int x = index + 1; x < size + 1; x++){
+      newData[x] = data[x+1];
+    }
+    size++;
+  }
+
+
 }
