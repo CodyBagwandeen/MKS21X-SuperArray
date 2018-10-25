@@ -64,4 +64,27 @@ public class SuperArray {
     data = newData;
   }
 
+  public boolean contains( String element) {
+    for ( int x = 0; x < size; x++) {
+      if (data[x].equals(element))
+      return true;
+    }
+    return false;
+  }
+
+  public int indexOf( String target) {
+    for ( int x = 0; x < size; x++) {
+      if ( data[x].equals(target))
+      return x;
+    }
+    return -1;
+  }
+
+  public int lastIndexOf( String target) {
+    for ( int x = size; x > 0; x--) {
+      if ( data[x].equals(target))
+      return size - x;
+    }
+    return -1;
+  }
 }
