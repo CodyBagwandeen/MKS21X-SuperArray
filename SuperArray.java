@@ -29,6 +29,9 @@ public class SuperArray {
   public String toString() {
     String output = "[";
     for ( int x = 0 ; x < size ; x++) {
+      if ( x != size -1)
+      output += data[x] + ", ";
+      else
       output += data[x];
     }
     return output + "]";
