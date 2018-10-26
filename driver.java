@@ -99,7 +99,17 @@ public class driver{
 
     System.out.println( "\n" );
     beef.remove("52");
+		System.out.println(beef.remove("52"));
     System.out.println(beef.size());
     System.out.println(beef);
+
+		beef.add("24");
+		beef.add("24");
+		beef.add("24");
+		beef.add("24");
+		System.out.println(beef);
+
+		System.out.println(beef.indexOf( "24"));
+		System.out.println(beef.lastIndexOf( "24"));
   }
   }
